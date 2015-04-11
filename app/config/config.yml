@@ -75,4 +75,19 @@ swiftmailer:
 
 easy_admin:
     entities:
-        # - AppBundle\Entity\Product
+        User:
+            class: AppBundle\Entity\User
+            list:
+                fields: ['id', 'username', 'email', 'lastlogin']
+            new:
+                fields: ['username', 'email', 'plainPassword']
+        Product:
+            class: AppBundle\Entity\Product
+            list:
+                actions:
+                    ['delete','show','edit']
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
